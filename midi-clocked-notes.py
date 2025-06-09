@@ -22,6 +22,7 @@ def parse_args_and_config():
     parser.add_argument("--in-port", help="Substring of MIDI input port name")
     parser.add_argument("--out-port", help="Substring of MIDI output port name")
 
+    parser.add_argument("--in-channel", type=int, default=15, help="MIDI Channel used to receive Control Change messages from a central MIDI controller")
     parser.add_argument("--out-channel", type=int, default=15, help="MIDI Channel used to send notes (15 by default)")
 
     parser.add_argument("--beats-per-bar", type=int, default=4, help="Beats per bar (4 by default)")
@@ -51,6 +52,7 @@ def parse_args_and_config():
         args.in_port = args.in_port or cfg.get("in_port")
         args.out_port = args.out_port or cfg.get("out_port")
 
+        args.in_channel = int(cfg.get("in_channel", args.in_channel))
         args.out_channel = int(cfg.get("out_channel", args.out_channel))
 
         args.beats_per_bar = int(cfg.get("beats_per_bar", args.beats_per_bar))
