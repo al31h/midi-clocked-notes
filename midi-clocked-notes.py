@@ -22,7 +22,7 @@ def parse_args_and_config():
     parser.add_argument("--in-port", help="Substring of MIDI input port name")
     parser.add_argument("--out-port", help="Substring of MIDI output port name")
 
-    parser.add_argument("--midi-channel", type=int, default=15, help="MIDI Channel used to send notes (15 by default)")
+    parser.add_argument("--out-channel", type=int, default=15, help="MIDI Channel used to send notes (15 by default)")
 
     parser.add_argument("--beats-per-bar", type=int, default=4, help="Beats per bar (4 by default)")
     parser.add_argument("--ticks-per-beat", type=int, default=1, help="Ticks per beat (default 1 = quarter)")
@@ -51,7 +51,7 @@ def parse_args_and_config():
         args.in_port = args.in_port or cfg.get("in_port")
         args.out_port = args.out_port or cfg.get("out_port")
 
-        args.midi_channel = int(cfg.get("midi_channel", args.midi_channel))
+        args.out_channel = int(cfg.get("out_channel", args.out_channel))
 
         args.beats_per_bar = int(cfg.get("beats_per_bar", args.beats_per_bar))
         args.ticks_per_beat = int(cfg.get("ticks_per_beat", args.ticks_per_beat))
@@ -133,26 +133,26 @@ def main():
                 bar_count += 1
                 
                 if not args.note == 0 and bar_count % args.notes_per_bar == 0:
-                    send_note_on(midi_out, args.note, 100, args.midi_channel)
+                    send_note_on(midi_out, args.note, 100, args.out_channel)
                 if not args.note_bar_1 == 0:
-                    send_note_on(midi_out, args.note_bar_1, 100, args.midi_channel)
+                    send_note_on(midi_out, args.note_bar_1, 100, args.out_channel)
                 if not args.note_bar_2 == 0 and bar_count % 2 == 0:
-                    send_note_on(midi_out, args.note_bar_2, 100, args.midi_channel)
+                    send_note_on(midi_out, args.note_bar_2, 100, args.out_channel)
                 if not args.note_bar_4 == 0 and bar_count % 4 == 0:
-                    send_note_on(midi_out, args.note_bar_4, 100, args.midi_channel)
+                    send_note_on(midi_out, args.note_bar_4, 100, args.out_channel)
                 if not args.note_bar_8 == 0 and bar_count % 8 == 0:
-                    send_note_on(midi_out, args.note_bar_8, 100, args.midi_channel)
+                    send_note_on(midi_out, args.note_bar_8, 100, args.out_channel)
                 if not args.note_bar_16 == 0 and bar_count % 16 == 0:
-                    send_note_on(midi_out, args.note_bar_16, 100, args.midi_channel)
+                    send_note_on(midi_out, args.note_bar_16, 100, args.out_channel)
 
 
         elif status == MIDI_START:
             print("▶️ Start received")
-            send_note_on(midi_out, args.note_start, 100, args.midi_channel)
+            send_note_on(midi_out, args.note_start, 100, args.out_channel)
 
         elif status == MIDI_STOP:
             print("⏹ Stop received")
-            send_note_on(midi_out, args.note_stop, 100, args.midi_channel)
+            send_note_on(midi_out, args.note_stop, 100, args.out_channel)
 
     midi_in.set_callback(midi_callback)
 

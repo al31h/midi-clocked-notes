@@ -1,0 +1,16 @@
+build/midi-clocked-notes/Analysis-00.toc
+build/midi-clocked-notes/base_library.zip
+build/midi-clocked-notes/EXE-00.toc
+build/midi-clocked-notes/localpycs/pyimod01_archive.pyc
+build/midi-clocked-notes/localpycs/pyimod02_importers.pyc
+build/midi-clocked-notes/localpycs/pyimod03_ctypes.pyc
+build/midi-clocked-notes/localpycs/pyimod04_pywin32.pyc
+build/midi-clocked-notes/localpycs/struct.pyc
+build/midi-clocked-notes/midi-clocked-notes.pkg
+build/midi-clocked-notes/PKG-00.toc
+build/midi-clocked-notes/PYZ-00.pyz
+build/midi-clocked-notes/PYZ-00.toc
+build/midi-clocked-notes/warn-midi-clocked-notes.txt
+build/midi-clocked-notes/xref-midi-clocked-notes.html
+dist/midi-clocked-notes.exe
+midi-clocked-notes.spec
